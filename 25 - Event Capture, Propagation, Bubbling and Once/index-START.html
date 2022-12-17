@@ -42,6 +42,22 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll("div");
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); // stop the bubbling-up process
+  }
+
+  // bubble up by default: clicked button-frame-window bottom up
+  // divs.forEach(div => div.addEventListener("click", logText));
+
+  // bottom down
+  divs.forEach(div => div.addEventListener("click", logText, {
+    capture: true, // OR captureEvents = false
+    once: true // will remove the event listener once it's triggered
+  }));
+  
 
 </script>
 </body>
